@@ -2,12 +2,23 @@
 
 const express = require('express');
 const authRoutes = require('./authRoutes');
+const User = require('./models/User');
 
 //q：解释下面这行代码的作用
 //a:创建一个express应用程序
 //q：express是什么
 //a:express是一个Node.js的web应用程序框架，用于构建web应用程序。
 const app = express();
+//q：解释下面这行代码的作用
+//a:同步用户模型，如果用户模型不存在，则创建用户模型。
+(async () => {
+  try {
+    await User.sync({ alter: true });
+    console.log('User model synchronized successfully');
+  } catch (error) {
+    console.error('Error synchronizing user model:', error);
+  }
+})();
 
 // 使用中间件解析请求体
 //q:解释下面这行代码的作用

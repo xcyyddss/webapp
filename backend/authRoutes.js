@@ -8,7 +8,10 @@
 //a:路由的作用是根据请求的URL路径调用相应的处理程序，实现不同的功能，如注册、登录等。
 //q：什么是请求的URL路径
 //a:请求的URL路径是指请求的URL中的路径部分，如http://localhost:3000/register中的/register。
-//q：
+//q：这里的代码属于前端路由吗
+//a:这里的代码属于后端路由。
+//q：authRoutes翻译为什么
+//a:authRoutes翻译为认证路由。
 // backend/authRoutes.js
 
 const express = require('express');
