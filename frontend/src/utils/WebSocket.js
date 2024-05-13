@@ -3,7 +3,7 @@
 let socket;
 
 export const initWebSocket = () => {
-  socket = new WebSocket('ws://localhost:8000/ws');
+  socket = new WebSocket('ws://localhost:3000/ws');
 
   socket.onopen = () => {
     console.log('WebSocket connected');

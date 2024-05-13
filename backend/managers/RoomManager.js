@@ -1,25 +1,29 @@
-// backend/managers/RoomManager.js
-
 const Room = require('../models/Room');
 
 class RoomManager {
   constructor() {
     this.rooms = [];
+    this.nextRoomId = 0; // 下一个房间的 id
   }
 
   createRoom(name, maxPlayers, owner) {
-    const room = new Room({
+    const room = new Room(
+      (this.nextRoomId++).toString(), // 分配自增的 id
       name,
       maxPlayers,
-      owner,
-      players: [owner] // 将房主加入房间
-    });
+      owner // 将房主加入房间
+    );
     this.rooms.push(room);
+    console.log('Room created:', room.id);
     return room;
   }
 
   getRoomById(id) {
     return this.rooms.find(room => room.id === id);
+  }
+
+  getAllRooms() {
+    return this.rooms;
   }
 
   joinRoom(roomId, player) {

@@ -1,12 +1,12 @@
 // backend/models/Room.js
 
 class Room {
-    constructor(id, mode, maxPlayers, owner) {
+    constructor(id, name, maxPlayers, owner) {
       this.id = id;
-      this.mode = mode;
+      this.name = name;
       this.maxPlayers = maxPlayers; // 新增最大玩家数属性
       this.owner = owner; // 新增房主属性
-      this.players = []; // 初始化玩家数组
+      this.players = [owner]; // 初始化玩家数组
     }
   
     addPlayer(player) {
@@ -24,7 +24,7 @@ class Room {
     toJSON() {
       return {
         id: this.id,
-        mode: this.mode,
+        name: this.name,
         maxPlayers: this.maxPlayers, // 添加最大玩家数到返回的 JSON 中
         owner: this.owner, // 添加房主到返回的 JSON 中
         players: this.players.map(player => ({ id: player.id, name: player.name }))
